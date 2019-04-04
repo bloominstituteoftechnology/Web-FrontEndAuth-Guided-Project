@@ -1,8 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import Container from './components/Container';
 
 ReactDOM.render(
-  <Container />,
-  document.querySelector('#target'),
+  <Router>
+    <Container />
+  </Router>,
+  document.querySelector('#target')
 );
