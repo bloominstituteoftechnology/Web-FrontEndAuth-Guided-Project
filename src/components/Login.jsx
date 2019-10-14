@@ -1,8 +1,7 @@
 import React, { useRef } from 'react';
 import axiosWithAuth from '../axios';
 
-
-export default function Login() {
+export default function Login(props) {
   const usernameRef = useRef();
   const passwordRef = useRef();
 
@@ -13,6 +12,7 @@ export default function Login() {
     })
       .then(res => {
         localStorage.setItem('token', res.data.token);
+        props.history.replace('/quotes')
       })
       .catch(error => {
         alert(error.response.data.message);
