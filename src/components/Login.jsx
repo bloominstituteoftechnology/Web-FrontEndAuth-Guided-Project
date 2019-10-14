@@ -1,8 +1,8 @@
-import React, { useState, useRef } from 'react';
+import React, { useRef } from 'react';
 import axiosWithAuth from '../axios';
 
 
-export default function Login(props) {
+export default function Login() {
   const usernameRef = useRef();
   const passwordRef = useRef();
 
@@ -12,17 +12,18 @@ export default function Login(props) {
       password: passwordRef.current.value,
     })
       .then(res => {
-        localStorage.setItem('token', res.data.token)
+        localStorage.setItem('token', res.data.token);
       })
       .catch(error => {
-        alert('argh')
-      }); 
+        alert(error.response.data.message);
+      });
   };
 
   return (
     <div className='login'>
       <div className='login-inputs'>
-        username <input ref={usernameRef} type="text" /> <br />
+        username <input ref={usernameRef} type="text" />
+        <br />
         password <input ref={passwordRef} type="text" />
       </div>
 
