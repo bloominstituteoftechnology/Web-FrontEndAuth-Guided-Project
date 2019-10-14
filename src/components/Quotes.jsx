@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axiosWithAuth from '../axios';
 
 export default function Quotes(props) {
   const [quotes, setQuotes] = useState([]);
@@ -11,16 +11,12 @@ export default function Quotes(props) {
   }, []);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/quotes', {
-      headers: {
-        Authorization: localStorage.getItem('token'),
-      },
-    })
+    axiosWithAuth().get('http://localhost:5000/api/quotes')
       .then(res => {
         setQuotes(res.data);
       })
       .catch(error => {
-        console.log(error);
+        alert(error.response.data.message);
       });
   }, []);
 
