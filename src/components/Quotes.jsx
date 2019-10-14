@@ -12,12 +12,12 @@ export default function Quotes(props) {
 
   useEffect(() => {
     axiosWithAuth().get('http://localhost:5000/api/quotes')
-      .then(res => {
-        setQuotes(res.data);
-      })
-      .catch(error => {
-        alert(error.response.data.message);
-      });
+    .then(res => {
+      setQuotes(res.data);
+    })
+    .catch(error => {
+      alert(error.response.data.message);
+    });
   }, []);
 
   return (
