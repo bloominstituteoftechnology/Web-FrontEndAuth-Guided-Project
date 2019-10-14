@@ -14,11 +14,23 @@
 
   <script>
     function makeToken(payload, secret) {
-
+      // encoder
+      // hashing function
+      const encodedPayload = btoa(JSON.stringify(payload));
+      const encodedSignature = btoa(md5(encodedPayload + btoa(secret)));
+      return `${encodedPayload}.${encodedSignature}`;
     }
 
     function verifyToken(token, secret) {
+      const [encodedPayload, encodedSignature] = token.split('.');
+      const signature = btoa(md5(encodedPayload + btoa(secret)));
 
+      if (signature === encodedSignature) {
+        const payload = JSON.parse(atob(encodedPayload));
+        return payload;
+      } else {
+        return 'No way'
+      }
     }
   </script>
 </body>

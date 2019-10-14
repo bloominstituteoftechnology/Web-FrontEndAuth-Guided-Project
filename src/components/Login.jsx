@@ -1,15 +1,15 @@
 import React, { useState, useRef } from 'react';
+import axios from 'axios';
 
 
-export default function Login() {
+export default function Login(props) {
   const usernameRef = useRef();
   const passwordRef = useRef();
-  const flash = '';
+
+  const [flash, setFlash] = useState(''); // [ sliceofstate, setstate ]
 
   const submit = () => {
-    // attempt login!
-    // on success, set token to local storage, set a flash message
-    // on failure, set a flash message with the error
+    props.login({ username, password });
   };
 
   return (
