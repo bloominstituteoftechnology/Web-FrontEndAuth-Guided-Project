@@ -67,7 +67,7 @@ function login(req, res) {
 function auth(req, res, next) {
   const { token } = req.headers;
   try {
-    const decoded = jwt.verify(token, 'shhhhh');
+    jwt.verify(token, 'shhhhh');
     next();
   } catch (error) {
     res.status(401).json({ message: error.message });
