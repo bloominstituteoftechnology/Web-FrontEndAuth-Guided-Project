@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const uuid = require('uuid');
+const jwt = require('jsonwebtoken');
 
 const app = express();
 app.use(express.json());
@@ -56,13 +57,14 @@ function replaceQuoteById(req, res) {
 function login(req, res) {
   const { username, password } = req.body;
   if (username === 'admin' && password === '1234') {
-    res.json({ token: 'yaViyzw2kn_Tp6rYJ82An1LnJ_nOEzLp7ww38oh-dFA' });
+    const token = jwt.sign({ userId: 'abcd' }, 'shhhhh');
+    res.json({ token });
   } else {
     res.status(401).end();
   }
 }
 
-app.post('/api/login', login);
+app.post('/login', login);
 app.get('/api/quotes', getAllQuotes);
 app.get('/api/quotes/:id', getQuoteById);
 app.post('/api/quotes', postNewQuote);
