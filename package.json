@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --watchAll",
-    "dev": "webpack --watch",
+    "webpack": "webpack --watch",
     "server": "live-server",
     "api": "node server.js"
   },
