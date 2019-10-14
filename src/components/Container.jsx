@@ -1,11 +1,9 @@
 import React from 'react';
 import { Route, NavLink, withRouter } from 'react-router-dom';
 import Login from './Login';
-import Users from './Users';
+import Quotes from './Quotes';
 import './Container.less';
 
-// users screen that displays users
-// login screen
 export function Container(props) {
   const onLogout = () => {
     localStorage.clear();
@@ -17,7 +15,7 @@ export function Container(props) {
       <nav>
         <span>
           <NavLink to='/'>Login</NavLink>
-          <NavLink to='/users'>Users</NavLink>
+          <NavLink to='/quotes'>Quotes</NavLink>
         </span>
 
         <button onClick={onLogout}>Logout</button>
@@ -29,11 +27,11 @@ export function Container(props) {
           exact
           component={Login}
         />
-        { /* or use a condition here */ }
+
         <Route
-          path='/users'
+          path='/quotes'
           exact
-          component={Users}
+          component={Quotes}
         />
       </main>
     </div>

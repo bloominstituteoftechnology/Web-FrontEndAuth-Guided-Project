@@ -1,25 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-export default function Users(props) {
-  const [users, setUsers] = useState([]);
+export default function Quotes(props) {
+  const [quotes, setQuotes] = useState([]);
 
   useEffect(() => {
-    // no token? Redirect to login screen!
     if (!localStorage.getItem('token')) {
       props.history.push('/');
     }
   }, []);
 
   useEffect(() => {
-    // fetch users
-    axios.get('http://localhost:5000/api/users', {
+    axios.get('http://localhost:5000/api/quotes', {
       headers: {
         Authorization: localStorage.getItem('token'),
       },
     })
       .then(res => {
-        setUsers(res.data);
+        setQuotes(res.data);
       })
       .catch(error => {
         console.log(error);
@@ -27,10 +25,10 @@ export default function Users(props) {
   }, []);
 
   return (
-    <div className='users'>
-      {users.map(u => (
-        <li key={u.id}>
-          {u.username}
+    <div className='quotes'>
+      {quotes.map(q => (
+        <li key={q.id}>
+          {q.text}
         </li>
       ))}
     </div>

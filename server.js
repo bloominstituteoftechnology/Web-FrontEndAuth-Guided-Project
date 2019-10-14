@@ -62,7 +62,7 @@ function login(req, res) {
 }
 
 function auth(req, res, next) {
-  const { token } = req.headers;
+  const token = req.headers.authorization;
   try {
     jwt.verify(token, 'shhhhh');
     next();
