@@ -60,7 +60,7 @@ function login(req, res) {
     const token = jwt.sign({ userId: 'abcd' }, 'shhhhh');
     res.json({ token });
   } else {
-    res.status(401).end();
+    res.status(401).json({ message: 'No idea who you are'});
   }
 }
 
