@@ -4,11 +4,11 @@ import axiosWithAuth from '../axios';
 export default function Quotes(props) {
   const [quotes, setQuotes] = useState([]);
 
-  useEffect(() => {
-    if (!localStorage.getItem('token')) {
-      props.history.push('/');
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (!localStorage.getItem('token')) {
+  //     props.history.push('/');
+  //   }
+  // }, []);
 
   useEffect(() => {
     axiosWithAuth().get('http://localhost:5000/api/quotes')
