@@ -14,8 +14,8 @@ export function Container(props) {
     <div className='container'>
       <nav>
         <span>
-          <NavLink activeStyle={{color: 'red'}} to='/'>Login</NavLink>
-          <NavLink activeStyle={{color: 'red'}} to='/quotes'>Quotes</NavLink>
+          <NavLink exact to='/'>Login</NavLink>
+          <NavLink to='/quotes'>Quotes</NavLink>
         </span>
 
         <button onClick={onLogout}>Logout</button>
