@@ -61,7 +61,7 @@ function login(req, res) {
   }
 }
 
-function auth(req, res, next) {
+function authCheck(req, res, next) {
   const token = req.headers.authorization;
   try {
     jwt.verify(token, 'shhhhh');
@@ -71,15 +71,15 @@ function auth(req, res, next) {
   }
 }
 
-// endpoint to exchange credentials for token
+// endpoint to exchange valid credentials for token
 app.post('/login', login);
 
 // endpoints that require valid token to work
-app.get('/api/quotes', auth, getAllQuotes);
-app.get('/api/quotes/:id', auth, getQuoteById);
-app.post('/api/quotes', auth, postNewQuote);
-app.delete('/api/quotes/:id', auth, deleteQuoteById);
-app.put('/api/quotes/:id', auth, replaceQuoteById);
+app.get('/api/quotes', authCheck, getAllQuotes);
+app.get('/api/quotes/:id', authCheck, getQuoteById);
+app.post('/api/quotes', authCheck, postNewQuote);
+app.delete('/api/quotes/:id', authCheck, deleteQuoteById);
+app.put('/api/quotes/:id', authCheck, replaceQuoteById);
 
 app.listen(5000, () => console.log(
   'Quotes server listening on port 5000!',
