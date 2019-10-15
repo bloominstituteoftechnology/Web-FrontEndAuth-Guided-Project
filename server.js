@@ -34,7 +34,7 @@ function getQuoteById(req, res) {
 }
 
 function postNewQuote(req, res) {
-  const quote = { id: uuid(), ...req.body, apocryphal: false };
+  const quote = { id: uuid(), ...req.body };
   quotes.push(quote);
   res.json(quote);
 }
