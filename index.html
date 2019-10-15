@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Barebones React App</title>
+  <title>Front End Auth</title>
 </head>
 
 <body>
@@ -14,8 +14,6 @@
 
   <script>
     function makeToken(payload, secret) {
-      // encoder
-      // hashing function
       const encodedPayload = btoa(JSON.stringify(payload));
       const encodedSignature = btoa(md5(encodedPayload + btoa(secret)));
       return `${encodedPayload}.${encodedSignature}`;
