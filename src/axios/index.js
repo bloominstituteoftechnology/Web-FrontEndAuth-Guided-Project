@@ -1,13 +1,11 @@
-import axios from 'axios';
+// CREATE A WRAPPER FOR THE AXIOS LIBRARY
 
-export default function () {
-  const token = localStorage.getItem('token');
+// This wrapper is a function that, when invoked,
+// returns an axios instance that automatically
+// puts the 'token' from browser's local storage
+// into an 'Authorization' header of the request.
 
-  const instance = axios.create({
-    headers: {
-      Authorization: token,
-    }
-  });
+// Usage should look like: `withAuth().get('http://api.com/friends').then(etc)`
+export default function withAuth() {
 
-  return instance;
 }

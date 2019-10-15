@@ -1,13 +1,15 @@
 import React from 'react';
-import { Route, NavLink, withRouter, Redirect } from 'react-router-dom';
+import { Route, NavLink } from 'react-router-dom';
 import Login from './Login';
 import Quotes from './Quotes';
 import './Container.less';
 
+// Make it so `Container` gets the 'magic' props from React Router
 export function Container(props) {
   const onLogout = () => {
-    localStorage.clear();
-    props.history.replace('/');
+    // Implement!
+    // 1- We need to flush token from local storage
+    // 2- We need to redirect users to login route
   };
 
   return (
@@ -28,21 +30,17 @@ export function Container(props) {
           component={Login}
         />
 
+        {/* (OPTION B) Create a secure Route for Quotes.
+        Alternatively, we could have the Quotes component
+        itself handle the redirect if no token. */}
         <Route
           exact
           path='/quotes'
-          render={props => withSecurity(Quotes, props)}
+          component={Quotes}
         />
       </main>
     </div>
   );
 }
 
-function withSecurity(Component, props) {
-  if (localStorage.getItem('token')) {
-    return <Component {...props} />
-  }
-  return <Redirect to='/'/>
-}
-
-export default withRouter(Container);
+export default Container;

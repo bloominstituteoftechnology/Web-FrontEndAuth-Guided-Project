@@ -1,21 +1,21 @@
 import React, { useRef } from 'react';
-import axiosWithAuth from '../axios';
+import axios from 'axios';
 
 export default function Login(props) {
   const usernameRef = useRef();
   const passwordRef = useRef();
 
   const submit = () => {
-    axiosWithAuth().post('http://localhost:5000/login', {
+    axios.post('http://localhost:5000/login', {
       username: usernameRef.current.value,
       password: passwordRef.current.value,
     })
       .then(res => {
-        localStorage.setItem('token', res.data.token);
-        props.history.replace('/quotes')
+        // Put the token string in local storage under a 'token' key
+        // Redirect users to the /quotes route
       })
       .catch(error => {
-        alert(error.response.data.message);
+        // Alert a sensible message pulled from the error object
       });
   };
 
@@ -28,9 +28,7 @@ export default function Login(props) {
       </div>
 
       <div>
-        <button onClick={submit}>
-          Submit
-        </button>
+        <button onClick={submit}>Submit</button>
       </div>
     </div>
   );
