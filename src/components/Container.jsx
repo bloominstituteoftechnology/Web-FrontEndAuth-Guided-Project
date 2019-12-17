@@ -9,7 +9,9 @@ export function Container(props) {
   const onLogout = () => {
     // Implement!
     // 1- We need to flush token from local storage
-    // 2- We need to redirect users to login route
+    localStorage.removeItem('token');
+    // 2- We need to redirect users to login route props.history
+    props.history.push("/")
   };
 
   return (
