@@ -6,7 +6,6 @@ import './Container.less';
 
 // Make it so `Container` gets the 'magic' props from React Router
 export function Container(props) {
-  debugger
   const onLogout = () => {
     // Implement!
     // 1- We need to flush token from local storage
