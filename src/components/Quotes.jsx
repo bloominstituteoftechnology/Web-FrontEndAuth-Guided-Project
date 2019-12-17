@@ -13,6 +13,8 @@ export default function Quotes(props) {
   useEffect(() => {
     // We need the wrapped axios instead, to send token
     // along automatically, in an Authorization header
+    const token = localStorage.getItem('token');
+
     axios.get('http://localhost:5000/api/quotes')
       .then(res => {
         setQuotes(res.data);
