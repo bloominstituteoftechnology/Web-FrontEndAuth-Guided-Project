@@ -75,7 +75,7 @@ function authCheck(req, res, next) {
 app.post('/login', login);
 
 // endpoints that require valid token to work
-app.get('/api/quotes', authCheck, getAllQuotes);
+app.get('/api/quotes', getAllQuotes);
 app.get('/api/quotes/:id', authCheck, getQuoteById);
 app.post('/api/quotes', authCheck, postNewQuote);
 app.delete('/api/quotes/:id', authCheck, deleteQuoteById);
