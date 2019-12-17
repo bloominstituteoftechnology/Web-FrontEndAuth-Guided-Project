@@ -44,4 +44,13 @@ export function Container(props) {
   );
 }
 
+function withAuthCheck(Component, props) {
+  // if token render component passing props to it
+  // otherwise use the Redirect to bounce you away
+  if (localStorage.getItem('token')) {
+    return <Component {...props} />
+  }
+  return <Redirect to='/' />
+}
+
 export default withRouter(Container);
