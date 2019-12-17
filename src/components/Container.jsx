@@ -1,11 +1,12 @@
 import React from 'react';
-import { Route, NavLink } from 'react-router-dom';
+import { Route, NavLink, withRouter, Redirect } from 'react-router-dom';
 import Login from './Login';
 import Quotes from './Quotes';
 import './Container.less';
 
 // Make it so `Container` gets the 'magic' props from React Router
 export function Container(props) {
+  debugger
   const onLogout = () => {
     // Implement!
     // 1- We need to flush token from local storage
@@ -43,4 +44,4 @@ export function Container(props) {
   );
 }
 
-export default Container;
+export default withRouter(Container);
