@@ -37,7 +37,7 @@ export function Container(props) {
         <Route
           exact
           path='/quotes'
-          component={Quotes}
+          render={props => withAuthCheck(Quotes, props)}
         />
       </main>
     </div>
