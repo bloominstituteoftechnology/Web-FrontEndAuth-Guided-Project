@@ -27,7 +27,7 @@ export default function Quotes(props) {
       method: 'get',
       headers: {
         Authorization: token,
-        Lady: 'Gaga',
+        'X-Lady': 'Gaga is the best',
       }
     })
       .then(res => {
