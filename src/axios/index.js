@@ -8,7 +8,7 @@ import axios from 'axios';
 
 // Usage should look like: `withAuth().get('http://api.com/friends').then(etc)`
 export default function withAuth() {
-  const token = localStorage.getItem('token')
+  const token = localStorage.getItem('token');
 
   const axiosInstance = axios.create({
     headers: {
