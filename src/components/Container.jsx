@@ -31,18 +31,36 @@ export function Container(props) {
           component={Login}
         />
 
+        <PrivateRoute
+          path='/quotes'
+          component={Quotes}
+        />
+
         {/* (OPTION B) Create a secure Route for Quotes.
         Alternatively, we could have the Quotes component
         itself handle the redirect if no token. */}
-        <Route
+        {/* <Route
           exact
           path='/quotes'
           render={props => withAuthCheck(Quotes, props)}
-        />
+        /> */}
       </main>
     </div>
   );
 }
+
+const PrivateRoute = ({ component: Component, ...rest }) => (
+  <Route
+    {...rest}
+    render={props =>
+      localStorage.getItem("token") ? (
+        <Component {...props} />
+      ) : (
+        <Redirect to="/" />
+      )
+    }
+  />
+);
 
 function withAuthCheck(Component, props) {
   // if token render component passing props to it
