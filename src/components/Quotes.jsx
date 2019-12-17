@@ -18,6 +18,7 @@ export default function Quotes(props) {
     axios.get('http://localhost:5000/api/quotes', {
       headers: {
         Authorization: token,
+        Lady: 'Gaga',
       }
     })
       .then(res => {
