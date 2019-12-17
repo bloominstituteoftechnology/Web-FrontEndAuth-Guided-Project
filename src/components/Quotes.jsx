@@ -15,7 +15,11 @@ export default function Quotes(props) {
     // along automatically, in an Authorization header
     const token = localStorage.getItem('token');
 
-    axios.get('http://localhost:5000/api/quotes')
+    axios.get('http://localhost:5000/api/quotes', {
+      headers: {
+        Authorization: token,
+      }
+    })
       .then(res => {
         setQuotes(res.data);
       })
