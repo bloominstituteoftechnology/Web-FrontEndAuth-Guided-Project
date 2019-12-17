@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios'; // Use the wrapped axios!
+import axios from '../axios'; // Use the wrapped axios!
 
 export default function Quotes(props) {
   const [quotes, setQuotes] = useState([]);
@@ -22,14 +22,15 @@ export default function Quotes(props) {
     //   }
     // })
 
-    axios({
-      url: 'http://localhost:5000/api/quotes',
-      method: 'get',
-      headers: {
-        Authorization: token,
-        'X-Lady': 'Gaga is the best',
-      }
-    })
+    // axios({
+    //   url: 'http://localhost:5000/api/quotes',
+    //   method: 'get',
+    //   headers: {
+    //     Authorization: token,
+    //     'X-Lady': 'Gaga is the best',
+    //   }
+    // })
+    axios().get('http://localhost:5000/api/quotes')
       .then(res => {
         setQuotes(res.data);
       })
