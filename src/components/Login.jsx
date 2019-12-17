@@ -13,10 +13,13 @@ export default function Login(props) {
       .then(res => {
         // SUCCESS! Credentials are valid:
         //   1- Put the token string in local storage under a 'token' key
+        localStorage.setItem('token', res.data.token);
+        // localStorage.setItem('token', JSON.stringify(myArray));
         //   2- Redirect users to the /quotes route
       })
       .catch(error => {
         // Alert a sensible message pulled from the error object
+        alert(error.message);
       });
   };
 
